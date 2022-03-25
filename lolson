@@ -342,22 +342,8 @@ function library:CreateWindow(name, size, hidebutton)
 		tab.TabPage.ScrollingDirection = "Y"
 		tab.TabPage.Position = window.BlackLine.Position + UDim2.fromOffset(0, 1)
 		tab.TabPage.Size = UDim2.fromOffset(window.size.X.Offset, window.size.Y.Offset - (window.TopBar.AbsoluteSize.Y + 1))
-		tab.TabPage.BackgroundTransparency = 1
+		tab.TabPage.BackgroundTransparency = 0
 		tab.TabPage.CanvasSize = UDim2.new(0, window.size.X.Offset, 0, 0)
-
-		local block = false
-		function tab:SelectTab()
-			repeat 
-				wait()
-			until block == false
-
-			block = true
-			for i,v in pairs(window.Tabs) do
-				if v ~= tab then
-					v.TabButton.TextColor3 = Color3.fromRGB(230, 230, 230)
-					v.TabPage.Visible = false
-				end
-			end
 
 			tab.TabButton.TextColor3 = window.theme.accentcolor
 			tab.TabPage.Visible = true
