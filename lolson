@@ -15,24 +15,24 @@ local mouse = player:GetMouse()
 local camera = game.Workspace.CurrentCamera
 
 library.theme = {
-	fontsize = 18,
-	font = Enum.Font.Code,
-	background = "rbxassetid://9194040112",
-	backgroundcolor = Color3.fromRGB(14, 14, 14),
-	tabstextcolor = Color3.fromRGB(255, 255, 255),
-	bordercolor = Color3.fromRGB(85, 28, 245),
-	accentcolor = Color3.fromRGB(85, 28, 245),
-	accentcolor2 = Color3.fromRGB(37, 150, 190),
-	outlinecolor = Color3.fromRGB(60, 60, 60),
-	outlinecolor2 = Color3.fromRGB(0, 0, 0),
-	sectorcolor = Color3.fromRGB(30, 30, 30),
-	toptextcolor = Color3.fromRGB(255, 255, 255),
-	topheight = 48,
-	topcolor = Color3.fromRGB(20, 20, 20),
-	topcolor2 = Color3.fromRGB(12, 12, 12),
-	buttoncolor = Color3.fromRGB(49, 49, 49),
-	buttoncolor2 = Color3.fromRGB(39, 39, 39),
-	itemscolor = Color3.fromRGB(200, 200, 200)
+    fontsize = 18,
+    font = Enum.Font.Code,
+    background = "rbxassetid://9194040112",
+    backgroundcolor = Color3.fromRGB(14, 14, 14),
+    tabstextcolor = Color3.fromRGB(255, 255, 255),
+    bordercolor = Color3.fromRGB(85, 28, 245),
+    accentcolor = Color3.fromRGB(85, 28, 245),
+    accentcolor2 = Color3.fromRGB(37, 150, 190),
+    outlinecolor = Color3.fromRGB(60, 60, 60),
+    outlinecolor2 = Color3.fromRGB(0, 0, 0),
+    sectorcolor = Color3.fromRGB(30, 30, 30),
+    toptextcolor = Color3.fromRGB(255, 255, 255),
+    topheight = 48,
+    topcolor = Color3.fromRGB(20, 20, 20),
+    topcolor2 = Color3.fromRGB(12, 12, 12),
+    buttoncolor = Color3.fromRGB(49, 49, 49),
+    buttoncolor2 = Color3.fromRGB(39, 39, 39),
+    itemscolor = Color3.fromRGB(200, 200, 200)
 }
 
 function library:CreateWatermark(name)
@@ -342,36 +342,38 @@ function library:CreateWindow(name, size, hidebutton)
 		tab.TabPage.ScrollingDirection = "Y"
 		tab.TabPage.Position = window.BlackLine.Position + UDim2.fromOffset(0, 1)
 		tab.TabPage.Size = UDim2.fromOffset(window.size.X.Offset, window.size.Y.Offset - (window.TopBar.AbsoluteSize.Y + 1))
-		tab.TabPage.BackgroundTransparency = 0
+		tab.TabPage.BackgroundTransparency = 1
 		tab.TabPage.CanvasSize = UDim2.new(0, window.size.X.Offset, 0, 0)
+
 		local block = false
-                function tab:SelectTab()
-            repeat 
-                wait()
-            until block == false
+		function tab:SelectTab()
+			repeat 
+				wait()
+			until block == false
 
-            block = true
-            for i,v in pairs(window.Tabs) do
-                if v ~= tab then
-                    v.TabButton.TextColor3 = Color3.fromRGB(230, 230, 230)
-                    v.TabPage.Visible = false
-                end
-            end
+			block = true
+			for i,v in pairs(window.Tabs) do
+				if v ~= tab then
+					v.TabButton.TextColor3 = Color3.fromRGB(230, 230, 230)
+					v.TabPage.Visible = false
+				end
+			end
 
-            tab.TabButton.TextColor3 = 
-            tab.TabPage.Visible = true
-            window.Line:TweenSizeAndPosition(UDim2.fromOffset(size.X + 15, 1), UDim2.new(0, (tab.TabButton.AbsolutePosition.X - window.Frame.AbsolutePosition.X), 0, 0) + (window.BlackLine.Position - UDim2.fromOffset(0, 1)), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.1)
-            wait(0.2)
-            block = false
-        end
+			tab.TabButton.TextColor3 = window.theme.accentcolor
+			tab.TabPage.Visible = true
+			window.Line:TweenSizeAndPosition(UDim2.fromOffset(size.X + 15, 1), UDim2.new(0, (tab.TabButton.AbsolutePosition.X - window.Frame.AbsolutePosition.X), 0, 0) + (window.BlackLine.Position - UDim2.fromOffset(0, 1)), Enum.EasingDirection.In, Enum.EasingStyle.Sine, 0.1)
+			wait(0.2)
+			block = false
+		end
 
-        if #window.Tabs == 0 then
-            tab:SelectTab()
-        end
+		if #window.Tabs == 0 then
+			tab:SelectTab()
+		end
 
-        tab.TabButton.MouseButton1Down:Connect(function()
-            tab:SelectTab()
-        end)
+		tab.TabButton.MouseButton1Down:Connect(function()
+			tab:SelectTab()
+		end)
+
 		tab.SectorsLeft = { }
 		tab.SectorsRight = { }
 
