@@ -16,7 +16,7 @@ function Library:Window(Name, Color, SizeY)
     local TabsListLayout = Instance.new("UIListLayout")
     local Tabs = Instance.new("Frame")
     local oldTab
-    getgenv().WindowThemeColor = 255,0,0
+    getgenv().WindowThemeColor = Color
 
     for _, gui in next, CoreGui:GetChildren() do
         if gui.Name == Name then
