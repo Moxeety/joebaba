@@ -16,7 +16,7 @@ function Library:Window(Name, Color, SizeY)
     local TabsListLayout = Instance.new("UIListLayout")
     local Tabs = Instance.new("Frame")
     local oldTab
-    getgenv().WindowThemeColor = Color
+    getgenv().WindowThemeColor = 255,0,0
 
     for _, gui in next, CoreGui:GetChildren() do
         if gui.Name == Name then
@@ -164,7 +164,7 @@ function Library:Window(Name, Color, SizeY)
                             section.Parent = Content
                         end
                     else
-                        tab.TextColor3 = Color3.fromRGB(125,125,125)
+                        tab.TextColor3 = Color3.fromRGB(200,200,200)
                     end
                 end
             end
